@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Button from '@material-ui/core/Button';
+
 class ScoreDivide extends Component {
     constructor(props) {
         super(props);
@@ -63,8 +65,8 @@ class ScoreDivide extends Component {
         })
     }
 
-    handleClick = (e) => {
-        const value = this.props.componentParams.positive ? Number(e.target.value) : Number(e.target.value) * -1
+    handleClick = (number) => {
+        const value = this.props.componentParams.positive ? number : number * -1
         this.setState({sum: this.state.sum + value});
     }
 
@@ -121,7 +123,7 @@ class ScoreDivide extends Component {
                     </div>
                 </form>
 
-                <button onClick={this.handleSubmit}>NEXT</button>
+                <Button variant="contained" color="primary" onClick={this.handleSubmit}>NEXT</Button>
             </div>
         )
     }

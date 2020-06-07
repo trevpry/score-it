@@ -33,10 +33,12 @@ class GamesList extends Component {
                 </div>
                 <div className='games-list'>
                     { this.state.games.map((game) => {
-                        return <div key={game.id}><Link to={`games/${game.id}`}>{game.name}</Link></div>
+                        return <div className='games-list-item' key={game.id}>
+                                <Link className='games-list-link'  to={`games/${game.id}`}>{game.name}</Link>
+                            </div>
                         })
                     }
-                </div>
+                </div>              
             </div>
         )
     }

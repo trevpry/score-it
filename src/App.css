@@ -3,3 +3,7 @@
     flex-direction: column;
     align-items: center;
 }
+
+body {
+    background-color: rgba(32, 178, 129, 0.226);
+}

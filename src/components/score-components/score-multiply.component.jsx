@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 
+import Button from '@material-ui/core/Button';
+
 class ScoreMultiply extends Component {
     constructor(props) {
         super(props);
+
+        const value1 = this.props.componentParams.value1;
+        const value2 = this.props.componentParams.value2;
+        const value1Value = value1.value === 'previousScore' ? this.props.lastResponse : 0;
+        const value2Value = value2.value === 'previousScore' ? this.props.lastResponse : 0;
+      
         
         this.state = {
-            value1: 0,
-            value2: 0,
+            value1: value1Value,
+            value2: value2Value,
             product: 1
         }
             
@@ -36,8 +44,8 @@ class ScoreMultiply extends Component {
         })
     }
 
-    handleClick = (e) => {
-        const value = this.props.componentParams.positive ? Number(e.target.value) : Number(e.target.value) * -1
+    handleClick = (number) => {
+        const value = this.props.componentParams.positive ? number : number * -1
         this.setState({sum: this.state.sum + value});
     }
 
@@ -58,8 +66,8 @@ class ScoreMultiply extends Component {
     render() {
         const value1 = this.props.componentParams.value1;
         const value2 = this.props.componentParams.value2;
-        const value1Value = value1.value === 'previousScore' ? this.props.lastResponse : this.state.value1;
-        const value2Value = value2.value === 'previousScore' ? this.props.lastResponse : this.state.value2;
+        // const value1Value = value1.value === 'previousScore' ? this.props.lastResponse : this.state.value1;
+        // const value2Value = value2.value === 'previousScore' ? this.props.lastResponse : this.state.value2;
         const value1Disabled = value1.value === 'previousScore' ? true : false;
         const value2Disabled = value2.value === 'previousScore' ? true : false;
 
@@ -68,13 +76,13 @@ class ScoreMultiply extends Component {
                 <form>
                     <div className='center'>
                     <label htmlFor='value1'>{value1.label}</label><br></br>
-                    <input type='text' id='value1' value={value1Value} disabled={value1Disabled} onChange={this.handleChange}/><br></br>
+                    <input type='text' id='value1' value={this.state.value1} disabled={value1Disabled} onChange={this.handleChange}/><br></br>
                     <label htmlFor='value2'>{value2.label}</label><br></br>
-                    <input type='text' id='value2' value={value2Value} disabled={value2Disabled} onChange={this.handleChange}/>
+                    <input type='text' id='value2' value={this.state.value2} disabled={value2Disabled} onChange={this.handleChange}/>
                     </div>
                 </form>
 
-                <button onClick={this.handleSubmit}>NEXT</button>
+                <Button variant="contained" color="primary" onClick={this.handleSubmit}>NEXT</Button>
             </div>
         )
     }

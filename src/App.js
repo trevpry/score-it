@@ -13,6 +13,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' component={GamesList} /> 
+        <Route exact path='/score-it' component={GamesList} /> 
         <Route path='/games/:gameId' component={GameOverview} />
       </Switch>
     </div>

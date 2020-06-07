@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Button from '@material-ui/core/Button';
+
 import ScoreAdd from '../score-components/score-add.component'
 import FinalScore from '../score-components/final-score.component'
 import ScoreBoolean from '../score-components/score-boolean.component'
@@ -201,14 +203,13 @@ class GameOverview extends Component {
     render() {
         const game = this.state.games.find(game => game.id == this.state.id);
         const currentGame = this.state.currentGame.id ? this.state.currentGame : game;
-        console.log(this.state.lastResponse)
         const ScoreComponent = currentGame.scoreComponents[this.state.currentScoreComponent].component;
         return (
-            <div className='center'>
-                <div>Game Overview</div>
-                <div>{game.name} Current Score: {this.state.currentScore}</div>
+            <div className='center game-overview'>
+                <h2 className='game-title'>Game Overview for {game.name} </h2>
+                {this.state.scoreClicked && <h3 className='game-score'>Current Score: {this.state.currentScore}</h3>}
                 {this.state.scoreClicked && <ScoreComponent componentParams={currentGame.scoreComponents[this.state.currentScoreComponent].componentParams} score={this.state.currentScore} lastResponse={this.state.lastResponse} handleClick={this.handleClick}/>}
-                {!this.state.scoreClicked && <button onClick={this.handleClick}>{this.state.button.buttonText}</button>}
+                {!this.state.scoreClicked && <Button variant="contained" color="primary" onClick={this.handleClick}>{this.state.button.buttonText}</Button>}
             </div>
         )
     }

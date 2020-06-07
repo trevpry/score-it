@@ -1,3 +1,10 @@
-.logo {
-    font-size: 20px;
+.header {
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    background-color: rgba(32, 178, 129, 0.644);
+
+    .logo {
+        font-size: 20px;
+        text-decoration: none;    
+    }
 }
